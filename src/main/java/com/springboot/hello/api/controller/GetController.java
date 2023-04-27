@@ -2,6 +2,8 @@ package com.springboot.hello.api.controller;
 
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.hello.api.dto.MemberDto;
 
+
+
 /* 공통으로 사용하는 URL
  * @RequestMapping 어노테이을 별다른 설정 없이 선언하면 HTTP의 모든 요청을 받습니다.
  */
@@ -18,10 +22,13 @@ import com.springboot.hello.api.dto.MemberDto;
 @RequestMapping("/api/v1/get-api") 
 public class GetController {
 	
+	private final Logger LOGGER = LoggerFactory.getLogger(GetController.class);
+	
 	// GET API는 웹 애플리케이션 서버에서 값을 가져올 때 사용하는 api입니다.
 	// URL /api/v1/get-api/hello
 	@RequestMapping(value = "/hello", method = RequestMethod.GET)
 	public String getHello() {
+		LOGGER.info("getHello 메서드가 호출되었습니다.");
 		return "Hello World";
 	}
 	/* 
